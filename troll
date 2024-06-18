@@ -1,0 +1,19 @@
+#!/bin/bash
+
+while true; do
+  tuteur=$(zenity --entry --title="Question" --text="Quel est ton tuteur préféré ?")
+
+  if [ $? -ne 0 ]; then
+    echo "Fenêtre fermée. Veuillez répondre à la question."
+  else
+    if [ "$tuteur" != "bberkrou" ] &&  [ "$tuteur" != "benjamin" ] &&  [ "$tuteur" != "ben" ]  &&  [ "$tuteur" != "max" ] &&  [ "$tuteur" != "maxime" ] && [ "$tuteur" != "mpierrot" ]; then
+      zenity --info --title="Attention" --text="Mauvaise réponse !"
+      echo "Réponse incorrecte. Verrouillage de la session Dommage..."
+      ft_lock
+    else
+      echo "Bonne réponse !"
+      zenity --info --title="Succès" --text="Bonne réponse !"
+      exit 0
+    fi
+  fi
+done
